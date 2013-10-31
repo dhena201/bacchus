@@ -1,0 +1,562 @@
+/*------------------------------------------------------------------------
+# BuzzComi - June 30, 2013
+# ------------------------------------------------------------------------
+# Designed & code by MegaDrupal
+# Websites:  http://www.megadrupal.com -  Email: info@megadrupal.com
+--------------------------------------------------------------------------*/
+
+
+/* 1.	Reset
+--------------------------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+text-decoration: none;
+}
+del {
+text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.rs, h1.rs, h2.rs, h3.rs, h4.rs, h5.rs, h6.rs {
+    margin: 0;
+    padding: 0;
+}
+ul.rs, ol.rs {
+    list-style: none;
+}
+
+img {
+    /* Responsive images (ensure images don't scale beyond their parents) */
+    max-width: 100%;
+    /* Part 1: Set a maxium relative to the parent */
+    /*width: auto\9; */
+    /* IE7-8 need help adjusting responsive images */
+    height: auto;
+    /* Part 2: Scale the height according to the width, otherwise you get stretching */
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+button, input, select, textarea {
+    margin: 0;
+    vertical-align: middle;
+    font-family: inherit;
+    font-size: 100%;
+    outline: none;
+}
+button, input {
+    *overflow: visible;
+    line-height: normal;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+label, select, button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer;
+}
+input[type="search"] {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: none;
+}
+
+/* 2.	Common style
+--------------------------------------------------------------------------------*/
+body {
+	font-family: "SegoeUI-Regular", "OpenSans", sans-serif;
+	font-size: 0.875em;
+	line-height: 1.2em;
+	color: #404040;
+}
+.wrap {
+	margin: 0 auto;
+	width: 1140px;
+}
+.wrap860 {
+	margin: 0 auto;
+	width: 860px;
+}
+ul {list-style: none;}
+a {
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.6s ease-out 0s;
+}
+a:hover {
+	color: #DD5B43
+}
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="submit"],
+textarea {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+h1, h2,
+.md-button,
+.md-logo span,
+.md-remain-time,
+.md-tilte-box,
+.md-notice,
+label.error{
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	color:#FFF;
+	line-height: 120%;
+}
+p,
+.md-copyright,
+.md-desc-box,
+input,
+textarea,
+.thanks  {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	color:#FFF;
+	line-height: 150%;
+}
+.md-button,input,textarea {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.md-form input {
+	background:none;
+	border: 1px solid #FFF;
+	height: 50px;
+	color:#FFF;
+	padding-left: 20px;
+	font-size: 16px;
+	width: 100%;
+}
+.md-form textarea {
+	background: none;
+	border: 1px solid #FFF;
+	color:#FFF;
+	font-size: 16px;
+	padding: 10px 20px;
+	height: 120px;
+	width: 100%;
+	margin-bottom: 0;
+	margin-top:20px;
+	width: 100%;
+}
+
+/* 3.	Main style
+--------------------------------------------------------------------------------*/
+#cycle-slideshow {width: 100%; height: 100%}
+.slideimg {
+	width: 100%;
+	height:100%;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+	background-size:cover;
+}
+	.img1 {
+		background:url(../img/1.jpg) no-repeat center center fixed;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/1.jpg', sizingMethod='scale');
+		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/1.jpg', sizingMethod='scale')";
+		}
+	.img2 {
+		background:url(../img/2.jpg) no-repeat center center fixed;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/2.jpg', sizingMethod='scale');
+		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/2.jpg', sizingMethod='scale')";
+		}
+	.img3 {
+		background:url(../img/3.jpg) no-repeat center center fixed;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/3.jpg', sizingMethod='scale');
+		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/3.jpg', sizingMethod='scale')";
+		}
+.md-logo {
+	padding: 35px 0 30px;
+	text-align: center;
+	border-top: 3px solid #DD5B43;
+}
+.md-logo h1 {
+	background: url('../images/logo.png') no-repeat center;
+	margin-bottom:10px;
+}
+.md-logo a {
+	display: inline-block;
+	width:135px;
+	height:32px;
+	text-indent: -5000px;
+}
+.md-logo span {
+	font-weight: normal;
+	font-size: 15px;
+	color: #666666;
+}
+
+.md-main {
+	position: relative;
+}
+.md-mainimg {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.md-block-center {
+	position: absolute;
+	top:29%;
+	left:0;
+	width: 100%;
+	margin-top: 0;
+	z-index: 2
+}
+.md-content,.md-remain-time{text-align: center;}
+.md-block-center h2.md-intro {
+	background: url('../images/bg-title.png') no-repeat center bottom;
+	font-size: 48px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-bottom: 30px;
+	position:relative;
+	display: inline-block;
+	margin: 0;
+}
+.md-block-center h2.md-intro span:before,.md-block-center h2.md-intro span:after {
+	position: absolute;
+	top: -10px;
+	content: url('../images/bg-diamond.png');
+}
+.md-block-center h2.md-intro span:before{
+	margin-left: -25px;
+}
+.md-block-center h2.md-intro span:after{
+	margin-left: 15px;
+}
+.md-block-center .md-button {
+	border-width: 2px;	
+	background:none;
+}
+.md-remain-time {
+	margin:23px 0 47px;
+}
+.md-remain-time #countdown_dashboard {display:inline-block;}
+.dash {
+	border: 2px solid #FFF;
+	display: inline-block;
+	float: left;
+	margin-right: 35px;
+	height: 120px;
+	width: 90px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.dash .digit {
+	font-size: 50px;
+	padding: 23px 0;
+	display: inline-block;
+	line-height: 40px;
+	font-weight: normal;
+	height: 45px;
+	float: left;
+}
+.dash .digit:first-child {padding-left: 16px;}
+
+.dash .dash_title {
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding: 3px 0;
+	border-top: 2px solid #FFF;
+	display:block;
+	clear: both;
+}
+.dash.last {margin-right: 0;}
+.md-block-bottom {
+	background:#000;
+	padding: 25px 0 28px 0;
+	left: 0;
+	right: 0;
+	position: relative;
+	margin-top:-2px;
+	border-bottom: 3px solid #DD5B43;
+	z-index: 3
+}
+
+/* 4.	Diaglog style
+--------------------------------------------------------------------------------*/
+.md-dialog {
+	position: absolute;
+	background:rgba(0,0,0);
+	background:rgba(0,0,0,0.6);
+	left:0;
+	right:0;
+	bottom: 100%;
+	opacity: 1;
+	overflow:hidden;
+	display: none
+}
+.md-dialog .wrap860 {
+	position: relative;
+	padding:40px 0 60px;
+}
+
+.md-dialog .md-insert {float: left;margin-right: 20px;}
+h2.md-tilte-box {
+	font-size: 40px;
+	margin-bottom: 10px;
+	margin-left:10px;
+}
+p.md-desc-box {
+	font-size:16px;
+	margin-bottom: 30px;
+	margin-left:10px;
+}
+
+.notify .md-form input[type="text"],
+.notify .md-form input[type="email"] {border-right: none;}
+.md-form .notify-submit,
+.md-form input.button {width: 165px; margin-left: 0}
+.contact .md-form input {
+	 margin-top: 20px;
+}
+.notify .md-form {
+	height: 60px;
+}
+.contact .md-button {float:right;}
+.contact .md-notice {
+	font-size:36px;
+	margin: 100px 0 78px;
+	width: 840px;
+	text-align: center;
+}
+.md-follow {
+	margin-top:40px;
+	margin-left: 10px;
+}
+.md-follow a {
+	border: 1px solid #FFF;
+	padding: 24px 28px;
+	float: left;
+	margin-right: 2%
+}
+.md-follow a:hover {
+	background:rgba(255,255,255);
+	background:rgba(255,255,255,0.2);
+}
+.md-follow [class^="icon-"] {
+	font-size:60px;
+	color:#FFF;
+}
+.btn-close {
+	background:url('../images/exit.png') no-repeat center center;
+	position: absolute;
+	right: 4%;
+	top: 40px;
+	width:41px;
+	height: 41px;
+	cursor:pointer;
+}
+label.error {
+	font-size: 15px;
+	margin-top: 5px;
+	display: inline-block;
+}
+
+.thanks {
+	color: #fff;
+	font-size: 16px;
+}
+#notify-content,
+#contact-content {
+	margin-left: 10px;
+}
+
+/* 5.	Footer
+--------------------------------------------------------------------------------*/
+.md-footer {
+	padding: 10px 0 8px;
+}
+.md-footer .md-copyright {
+	font-size: 13px;
+	color: #666666;
+}
+.md-footer .md-social-group {
+	text-align: right
+}
+.md-footer .md-social-group [class^="icon-"] {
+	color:#333333;
+	font-size: 22px;
+	margin-left:10px;
+	transition: all 0.2s ease-out 0s;
+}
+.md-footer .md-social-group a:hover [class^="icon-"] {
+	color: #DD5B43
+}
+
+/* 6.	Button
+--------------------------------------------------------------------------------*/
+.md-button,
+.md-form input[type="submit"],
+.md-form input[type="reset"] {
+	border: 1px solid #FFF;
+	color: #fff;
+	background: rgba(255,255,255);
+	background: rgba(255,255,255,0.2);
+	display: inline-block;
+	cursor: pointer;
+	height: 50px;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	transition: all 0.6s ease-out 0s;
+}
+.md-button:hover,.md-button.active,
+.md-form input[type="submit"]:hover,
+.md-form input[type="reset"]:hover {
+	background: none;
+	color: #fff;
+}
+.md-block-bottom .md-button {
+	font-weight: 700;
+	font-size: 18px;
+	padding:0 30px;
+	line-height: 48px;
+}
+.md-btn-group .md-btn-text {
+	position: relative;
+	top:0;
+}
+.md-form button {margin-top:20px;}
+/*#mc-embedded-subscribe {
+	margin-left: 0;
+	border-right: 1px solid #FFF;
+	background: rgba(255,255,255);
+	background: rgba(255,255,255,0.2);
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0 0 0 2px;
+	transition: all 0.6s ease-out 0s;
+}
+#mc-embedded-subscribe:hover {
+	background: none;
+}*/
+#notify-content label {
+	display: none
+}
+.insert,
+#notify-content .mc-field-group {
+	width: 40%;
+	float: left
+}
+
+
+/* Clearfix
+--------------------------------------------------------------------------------*/
+* html .clearfix,
+* html .ui-helper-clearfix {
+    height: 1%; /* IE5-6 */
+}
+
+.clearfix,
+.ui-helper-clearfix {
+    display: inline-block; /* IE7xhtml*/
+}
+
+html .clearfix,
+html .ui-helper-clearfix {
+    display: block; /* O */
+}
+
+.clearfix:after,
+.ui-helper-clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    line-height: 0;
+    font-size: 1px;
+    overflow: hidden;
+}
+#mm-object-dialog .widget-inside {
+    display: block;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+		.md-logo h1 {
+			background-image: url(../images/logo@2x.png);
+			background-size: 135px 32px;
+		}
+
+}

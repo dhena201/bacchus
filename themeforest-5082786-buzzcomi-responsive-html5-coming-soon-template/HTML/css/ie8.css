@@ -1,0 +1,13 @@
+.md-dialog {
+       background: url(../images/ie8bg/black60.png) repeat left top
+    } 
+		
+		
+.md-button,
+.md-form input[type="submit"],
+.md-form input[type="reset"] {
+       background: url(../images/ie8bg/white20.png) repeat left top
+    } 
+		
+.md-logo {padding-top: 18px;}
+.md-form input {padding-top: 10px;}

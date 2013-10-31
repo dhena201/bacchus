@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<title>BuzzComi - Coming Soon HTML5 template</title>
+	<!-- Framework CSS -->
+<link rel="stylesheet" href="style.css" media="screen" />
+<link href="assets/src/prettify.css" type="text/css" rel="stylesheet" />
+    <script src="assets/src/prettify.js" type="text/javascript"></script>
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:10px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+	<h1 align="center">&ldquo;BuzzComi - Coming Soon HTML5 template&rdquo;</h1>
+	<p class="subtitle">Created: 29/June/2013<br>
+					By: MegaDrupal<br>
+					Email: <a href="mailto:info@megadrupal.com">info@megadrupal.com</a><br>
+					Website: <a href="http://megadrupal.com">http://megadrupal.com</a><br>
+	<div class="separater"></div>
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a>
+			<ol>
+				<li><a href="#normalpages">HTML file</a></li>
+				<li><a href="#slider">Background Slider</a></li>
+				<li><a href="#notify">Notify form</a></li>
+				<li><a href="#contactform">Contact form</a></li>
+				</ol>
+      </li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>			
+		</ol>
+		<div class="separater"></div>
+</div>
+<div class="wrapper">
+<h3 id="htmlStructure"><strong>I) HTML Structure</strong> - <a href="#toc">top</a></h3>
+<p>BuzzComi is a 960px fluid theme with indented and intuitively spaced HTML. You will find in-line commenting allthroughout the HTML so that you can always figure out what section of the layout you are in. The backbone of every page is as follows:</p>
+		<pre id="normalpages" class="prettyprint lines">
+			&lt!-- HEADER -->
+			&ltheader>
+			    &ltdiv class="md-logo">
+					{LOGO & SLOGAN}
+			    &lt/div>
+			&lt/header>
+			&lt!-- /HEADER -->
+			&lt!-- MAIN -->
+			&ltsection class="md-main">
+				&ltdiv class="md-mainimg">
+					{BACKGROUND IMAGE OR SLIDESHOW}
+				&lt/div>
+				&ltdiv class="md-block-center" id="md-content-center">
+					&ltdiv class="md-content">
+						{INTRO TEXT & COUNT DOWN}
+					&lt/div>
+				&lt/div>&lt!-- /BLOCK CENTER -->
+				&ltdiv class="md-block-bottom">
+					&ltdiv class="md-btn-group wrap860" id="md-btn-group">
+						&ltdiv class="container_12 clearfix">
+							{BOTTOM BUTTONS GROUP}
+						&lt/div>
+					&lt/div>&lt!-- /BUTTON GROUP -->
+
+					&ltdiv class="md-dialog contact" id="contact-us">
+						&ltdiv class="wrap860">
+							&ltdiv class="container_12">
+								{CONTACT FORM}
+							&lt/div>
+						&lt/div>
+					&lt/div>&lt!-- /CONTACT US -->
+
+					&ltdiv class="md-dialog follow" id="follow">
+						&ltdiv class="wrap860">
+							&ltdiv class="container_12">
+								{FOLLOW US ICONS}
+							&lt/div>
+						&lt/div>
+					&lt/div>&lt!-- /FOLLOW -->
+
+					&ltdiv class="md-dialog notify" id="notify">
+						&ltdiv class="wrap860">
+							&ltdiv class="container_16">
+								{NOTIFY FORM}
+							&lt/div>
+						&lt/div>
+					&lt/div>&lt!-- /NOTIFY -->
+
+				&lt/div>&lt!-- /BLOCK BOTTOM -->
+			&lt/section>
+
+			&lt!-- FOOTER -->
+			&ltfooter class="md-footer">
+				&ltdiv class="wrap">
+					&ltdiv class="container_12 clearfix">
+						{COPYRIGHT INFORMATION & SOCIAL ICONS}
+					&lt/div>
+				&lt/div>
+			&lt/footer>
+			&lt!-- /FOOTER -->
+		</pre>	
+	
+        <div class="separater"></div>
+        <h5 id="slider">Background slider</h5>
+		<p>You can use 1 static image or slideshow for background slider. This template uses jQuery Cycle for background slider. Here is the general structure</p>
+		<pre class="prettyprint lines">
+			&ltdiv id="cycle-slideshow">
+				&ltdiv class="slideimg img1">&lt/div>
+				&ltdiv class="slideimg img2">&lt/div>
+				&ltdiv class="slideimg img3">&lt/div>
+			&lt/div>
+		</pre>
+		<p>In case you want to use background slider, you need to include <strong>jquery.cycle.lite.js</strong> plugin inside the page.</p>
+		<pre class="prettyprint lines">
+&ltscript type="text/javascript" src="js/jquery.cycle.lite.js"&gt&lt/script&gt
+		</pre>
+		<p>Use the following script in script.js to fire the plugin</p>
+		<pre class="prettyprint lines">
+$('#cycle-slideshow').cycle();
+		</pre>		
+		<p>For more information about this jQuery plugin, please visit to <a href="http://malsup.com/jquery/cycle/" target="_blank">jQuery Cycle</a></p>		
+
+		<div class="separater"></div>
+        <h5 id="notify">Notify form</h5>
+		<p>BuzzComi allow you 3 type to save user email: Save to database, save to file &amp; intergrate with Mailchimp service.</p>
+		<p>This is HTML code to use for saving to database or file:</p>
+		<pre class="prettyprint lines">
+			&ltform action="processNotifyForm.php" method="post" id="md-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					&ltdiv class="insert omega">
+							&ltinput type="email" value="" name="email" class="email" id="mce-EMAIL" placeholder="Insert your email here" required>
+					&lt/div>
+					&ltdiv class="">
+							&ltinput type="submit" value="Subscribe" name="subscribe" id="md-subscribe" class="md-button notify-submit">
+					&lt/div>
+			&lt/form>
+			</pre>
+			<p>To config where to save, you need to change processNotifyForm.php file. All you need is change $result = writeToFile($email); to $result = insertEmailToDatabase($email); (remember to change database username, passwords &amp; database name). There's an sql file that help you auto create database table too.</p>
+			<p>If you like to use Mailchimp services, you can replace above HTML code with Mailchimp code, need modify a little like this:</p>
+			<pre class="prettyprint lines">
+				&ltform action="MAICHIMPLINK" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					&ltdiv class="mc-field-group">
+						&ltlabel for="mce-EMAIL">Email Address &lt/label>
+						&ltinput type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+					&lt/div>
+						&ltdiv class="">&ltinput type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">&lt/div>
+					&lt/form>
+				</pre>
+			<p>You can follow this instruction:<br>
+				<a href="https://dl.dropboxusercontent.com/u/11090063/megadrupal/support/bc_mailchimp1.png">Step 1</a>, 
+<a href="https://dl.dropboxusercontent.com/u/11090063/megadrupal/support/bc_mailchimp2.png">Step 2</a>, 
+<a href="https://dl.dropboxusercontent.com/u/11090063/megadrupal/support/bc_mailchimp3.png">Step 3</a>, 
+<a href="https://dl.dropboxusercontent.com/u/11090063/megadrupal/support/bc_mailchimp4.png">Step 4</a>, 
+<a href="https://dl.dropboxusercontent.com/u/11090063/megadrupal/support/bc_mailchimp5.png">Step 5</a>
+			</p>
+		<div class="separater"></div>
+		<h5 id="contactform">Contact form</h5>
+		<p>To configure contact form send email to your email address, open processForm.php, find line 47:</p>
+		<pre class="prettyprint lines">
+$to = "info@megadrupal.com";
+		</pre>
+		<p>and change email address to your email address</p>
+</div><!--wrapper-->
+<div class="wrapper">
+<h3 id="cssFiles"><strong>II) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+<p>This theme uses <strong>style.css</strong> file as main CSS file.</p>
+		<h6>style.css</h6>
+		<p>Main CSS files in this theme is style.css that contains all of specific stylings for the theme.The file is separated into 13 sections using labels as follows:</p> 
+
+<pre class="prettyprint lines">		
+1.	Reset
+2.	Common style
+3.	Main style
+4.	Diaglog style
+5.	Footer
+6.	Button
+</pre>
+<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p> 
+		<h6>responsive.css</h6> 
+		<p>responsive.css contains styling for media queries that allows us to tailor to different resolutions and devices without changing the content. The file is separated into sections as follows:</p>
+		<pre class="prettyprint lines">	
+@media only screen and (max-width: 1144px) {
+	
+{SOME CODES}
+
+}
+
+@media only screen and (max-width: 900px) {
+	
+{SOME CODES}
+
+}
+
+@media only screen and (max-width: 700px) {
+
+{SOME CODES}
+
+}
+
+@media only screen and (max-width: 480px) {
+
+{SOME CODES}
+
+}
+   </pre>	
+   <p>If you would like to edit styling of the specific device width, simply find the appropriate label in the <strong>responsive.css</strong> file, and then scroll down until you find the appropriate style that needs to be edited.</p> 
+   
+		<h4>Additional css files</h4>
+		<ol>
+			<li><strong>grid.css</strong> - 960 fluid grid</li>
+            <li><strong>ie8.css</strong> - fix IE 8 problem</li>
+            <li><strong>normalize.css</strong> - HTML5 reset</li>
+            <li><strong>responsive.css</strong> - Responsive CSS</li>
+            <li><strong>style-blue.css</strong> - Blue skin</li>
+<li><strong>style-green.css</strong> - Green skin</li>
+		</ol>
+</div><!--wrapper-->
+<div class="wrapper">
+<h3 id="javascript"><strong>III) JavaScript</strong> - <a href="#toc">top</a></h3>
+<p>This theme imports following Javascript files.</p>
+		
+		<ol>
+    	<li><strong>jquery.cycle.lite.js</strong> - jQuery cycle</li>
+		<li><strong>jquery.lwtCountdown-1.0.js</strong> - jQuery Count down </li>	
+      <li><strong>jquery.form.js</strong> - allows you to upgrade HTML forms to use AJAX</li>
+			<li><strong>jquery.validate.min.js</strong> - validate contact form and comment form</li>
+			<li><strong>misc.js</strong> - contains some helped functions</li>
+      <li><strong>script.js</strong> - contains all custom script</li>
+		</ol>
+		<p>Except <strong>script.js</strong>, all of the plugins are packed, so you don't need to manually edit anything in these files. The only necessary thing to know is how to call the method. You can refer to the website of the plugin author I listed in the <strong>"Sources and Credits"</strong> section  to learn more about them.</p>  
+		<p><strong>script.js</strong> contains custom scripts and scripts to call method for above plugin. The file is separated in to sections with appropriate label.</p>
+		
+  <pre class="prettyprint lines">	
+/* Auto resize function
+---------------------------------------------------------- */	
+
+{SOME CODES}
+
+/* Start Countdown
+---------------------------------------------------------- */
+
+{SOME CODES}
+
+/* Call Cycle slider
+---------------------------------------------------------- */
+
+{SOME CODES}
+
+/* Close button 
+---------------------------------------------------------- */	
+
+{SOME CODES}
+
+/* Button group
+---------------------------------------------------------- */
+
+{SOME CODES}
+
+/* Contact form: Ajax & Validate
+---------------------------------------------------------- */	
+{SOME CODES}
+
+/* Notify form: Ajax & Validate
+---------------------------------------------------------- */
+
+{SOME CODES}
+
+        </pre>		
+</div><!--wrapper-->
+<div class="wrapper">
+	<h3 id="credits"><strong>IV) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+	<p>I've used the following images, icons or other files as listed.</p>
+	<ul>
+		<li><a target="_blank" href="http://www.jquery.com">jQuery</a></li>	
+		<li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>	
+		<li><a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/" target="_blank">form validator</a></li>
+        <li><a href="http://malsup.com/jquery/form/" target="_blank">jquery.form.js</a></li>
+        <li><a href="http://malsup.com/jquery/cycle/" target="_blank">jQuery cycle</a></li>
+        <li><a href="http://www.littlewebthings.com/projects/countdown/" target="_blank">jQuery Countdown plugin v1.0</a></li>
+        <li><a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a></li>
+	</ul>
+</div>
+<div class="wrapper">
+	<p>Thank you so much for purchasing this template. If you have any question relating to the themes please post your question to support forum <a href="http://wpprime.com/forum">http://wpprime.com/forum</a></p> 
+	<p class="append-bottom alt large"><strong>MegaDrupal</strong><br>
+    Email: <a href="mailto:info@megadrupal.com">info@megadrupal.com</a><br>
+	Website: <a href="http://megadrupal.com">http://megadrupal.com</a><br>
+	<p><a href="#toc">Go To Table of Contents</a></p>
+</div>
+</body>
+<script type="text/javascript" src="assets/prettify/prettify.js"></script>
+	<script> prettyPrint(); </script>
+</html>

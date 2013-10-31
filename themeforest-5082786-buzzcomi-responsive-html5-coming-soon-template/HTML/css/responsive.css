@@ -1,0 +1,154 @@
+/*------------------------------------------------------------------------
+# BuzzComi - June 30, 2013
+# ------------------------------------------------------------------------
+# Designed & code by MegaDrupal
+# Websites:  http://www.megadrupal.com -  Email: info@megadrupal.com
+--------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1144px) {
+	.wrap {
+		width: 100%;
+	}
+	.wrap860 {
+		width: 80%;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	.wrap860 {
+		width: 100%;
+	}
+	.md-block-center h2.md-intro {
+		font-size: 40px;
+		font-weight: 400
+	}
+	.md-block-center h2.md-intro span:before,.md-block-center h2.md-intro span:after {
+		top: -8px;
+	}
+	.dash {
+		margin-right: 25px
+	}
+	.md-block-bottom .md-button {
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	
+	.md-block-center h2.md-intro {
+		font-size: 30px;
+	}
+	.md-block-center h2.md-intro span:before,.md-block-center h2.md-intro span:after {
+		top: -5px;
+	}
+	.dash {
+		height: 100px;
+		width: 76px;
+		margin-right: 20px
+	}
+	.dash .digit {
+		font-size: 40px;
+		padding: 17px 0 18px;
+		height: 35px;
+		line-height: 35px;
+	}
+	.dash .dash_title {
+		font-size: 14px
+	}
+	.md-button {
+		height: 36px
+	}
+	.md-block-bottom .md-button {
+		line-height: 34px;
+		font-size: 13px;
+		padding: 0 15px;
+		font-weight: 400
+	}
+	h2.md-tilte-box {
+		font-size: 30px;
+	}
+	p.md-desc-box {
+		font-size: 15px;
+	}
+	.insert {
+		width: 50%
+	}
+	.md-dialog .wrap860 {
+		padding: 20px 0 30px
+	}
+	.btn-close {
+		top: 20px;
+		width:25px;
+		height: 25px;
+	}
+	.md-form .notify-submit {
+		width: 115px
+	}
+	.md-follow a {
+		padding: 17px 20px;
+	}
+	.md-footer,
+	.md-footer .md-social-group {text-align: center}
+	.md-social-group,
+	.md-copyright {display: block; float: none; width: 100% !important}
+	.md-copyright {margin-bottom: 6px;}
+}
+
+
+@media only screen and (max-width: 480px) {
+	.md-block-center h2.md-intro span:before,.md-block-center h2.md-intro span:after {
+		content: "";
+	}
+	.md-block-center {
+		top: 10%
+	}
+	.weeks_dash,
+	.days_dash {
+		margin-bottom: 20px;
+	}
+	.hours_dash {
+		clear: left;
+	}
+	.md-block-bottom {
+		padding-bottom: 18px;
+	}
+	.grid_1,
+	.grid_2,
+	.grid_3 {
+		width: 48% !important;
+		float: none;
+		display: block
+	}
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12 {
+		width: 98% !important;
+		float: none;
+		display: block
+	}
+	.md-block-bottom .grid_4 {
+		margin-bottom: 10px;
+	}
+	
+	.insert {
+		width: 60%
+	}
+	.md-form .notify-submit {
+		width: 40%
+	}
+	.md-follow a {
+		padding: 10px 14px;
+	}
+	
+	.md-follow [class^="icon-"] {
+		font-size:40px;
+		color:#FFF;
+	}
+	
+}

@@ -1,0 +1,18 @@
+a:hover,
+.md-footer .md-social-group a:hover [class^="icon-"] {
+	color: #00C492
+}
+.md-logo,
+.md-block-bottom {
+	border-color: #00C492;
+}
+.md-logo h1 {
+	background-image: url('../images/logo-green.png');
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+		.md-logo h1 {
+			background-image: url(../images/logo@2x-green.png);
+			background-size: 135px 32px;
+		}
+}
