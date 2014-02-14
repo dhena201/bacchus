@@ -1,0 +1,9 @@
+{
+    "name": "lou/bacchus",
+    "require": {
+		"twitter/bootstrap": ">3.0.0"
+    },
+    "require-dev": {
+        "fzaninotto/Faker": "dev-master"
+    }
+}

@@ -38,9 +38,9 @@
 |
 */
 
-$route['default_controller'] = "app";
+$route['default_controller'] = 'app';
+$route['admin'] = 'admin/admin'; // default controller for admin subdirectory is admin.php
 $route['404_override'] = '';
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/ci/'; #
+
+$config['base_url']	= 'http://localhost/bacchus/'; // or this http://'.$_SERVER['SERVER_NAME'].'/bacchus/ ??????
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +92,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 
 /*
@@ -180,7 +181,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1; //for development -- change when in production stage
 
 /*
 |--------------------------------------------------------------------------
@@ -341,7 +342,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*
@@ -357,6 +358,10 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/* --- Adegga API Key ---
+ * --- keep this safe --
+ * */
+$config['adegga_api_key'] = 'f0ad6b649a481c4729eb';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

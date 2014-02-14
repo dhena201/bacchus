@@ -1,107 +1,78 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     class User extends MY_Controller {
         
-        public function index(){
-	        if (!$this->ion_auth->logged_in()) {
-				redirect('app/login', 'refresh');
+		private $content;
+		
+		public function __construct(){
+			parent::__construct();
+			if (!$this->ion_auth->logged_in()) {
+				redirect('auth/login', 'refresh');
 			} elseif ($this->ion_auth->is_admin()) {
 				redirect('admin', 'refresh');
 			} else {
-				$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-				
-				$data['username'] = $this->ion_auth->user()->row()->username;
-				$this->load->view('includes/user_header', $data); 
-				$this->load->view('user', $data);
+				$this->load->model('User_model');
+				$this->content = 'user/user_template';
 			}
-			$this->load->model('user_model');
-			//$this->load->view('projectcamp/index.html');
-        	//echo "<pre>";
-        	//print_r($this->user_model->find());
-			//echo "</pre>";
+		}
+		
+        public function index(){
+			$data['title'] = 'Dashboard'; 
+			$data['content'] = $this->content;
+			$data['user_content'] = 'user/dashboard';
+			$data['navigation'] = $this->navigation;
+			$data['username'] = $this->ion_auth->user()->row()->username;
+			$data['user'] = $this->ion_auth->user()->row();
+			$this->load->view($this->layout, $data);
         }
 		
-		public function plogin(){		
-			$this->load->view('projectcamp/login.html');
-		}
-		
-		public function pregister(){		
-			$this->load->view('projectcamp/register.html');
-		}
-		
+		/** * Logout current user*
+		 * @access public 
+		 * @param null 
+		 * @return void
+		 * */
 		public function logout(){		
 			$this->ion_auth->logout();
 			redirect('/', 'refresh');
 		}
 		
+		/** * Redirect to auth/edit_user *
+		 * @access public 
+		 * @param null 
+		 * @return void
+		 * */
 		public function edit_account(){		
-			/*$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
-			$data['username'] = $this->ion_auth->user()->row()->username;
-			$data['user'] = $this->ion_auth->user()->row();
-			$this->lang->load('auth', 'english');
-			$this->load->view('includes/user_header', $data);
-			$this->load->view('edit_account', $data);*/
-			//$this->load->view('auth/edit_user');
 			redirect('auth/edit_user/'.$this->ion_auth->user()->row()->id); // for now
 		}
 		
-		public function reset_password(){		
-			redirect('/user', 'refresh');
-		}
-		public function delete_user(){
-			$id = $this->ion_auth->user()->row()->id;
-			if($this->ion_auth->delete_user($id)){
-				//success
-			} else {
-				//failure
-			}
-		}
+		/** * Load user profile page *
+		 * @access public 
+		 * @param null 
+		 * @return void
+		 * */
 		public function profile(){		
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			/* tmp data */
 			$data['title'] = 'View Profile'; 
-			$data['content'] = 'profile'; 
-			$data['username'] = $this->ion_auth->user()->row()->username;
-			$data['user'] = $this->ion_auth->user()->row();
-			$this->lang->load('auth', 'english');
+			$data['content'] = $this->content;
+			$data['user_content'] = 'user/profile';
+			$data['navigation'] = $this->navigation;
 			$this->load->view($this->layout, $data);
 		}
 		
+		/** * Load help page *
+		 * @access public 
+		 * @param null 
+		 * @return void
+		 * */
 		public function help(){
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			/* tmp data */
 			$data['title'] = 'Help'; 
-			$data['content'] = 'help'; 
-			$data['username'] = $this->ion_auth->user()->row()->username;
-			$data['user'] = $this->ion_auth->user()->row();
-			$this->lang->load('auth', 'english');
-			$this->load->view($this->layout, $data);
-		}
-
-		//view cellar
-		public function cellar(){
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			/* tmp data */
-			$data['title'] = 'View Cellar'; 
-			$data['content'] = 'cellar'; 
-			$data['username'] = $this->ion_auth->user()->row()->username;
-			$data['user'] = $this->ion_auth->user()->row();
-			$this->lang->load('auth', 'english');
-			$this->load->view($this->layout, $data);
-		}
-		
-		//view orders
-		public function orders(){
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			/* tmp data */
-			$data['title'] = 'View Orders'; 
-			$data['content'] = 'orders'; 
-			$data['username'] = $this->ion_auth->user()->row()->username;
-			$data['user'] = $this->ion_auth->user()->row();
-			$this->lang->load('auth', 'english');
+			$data['content'] = $this->content;
+			$data['user_content'] = 'help';
+			$data['navigation'] = $this->navigation;
 			$this->load->view($this->layout, $data);
 		}
 		
     }
     
-?>
+/* 
+ * End of file User.php 
+ * Location: application/controllers/User.php 
+ * */

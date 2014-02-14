@@ -1,29 +1,26 @@
-<?php
-    class App extends CI_Controller {
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+	/* public controller */
+    class App extends MY_Controller {
         
-        public function index(){
-			 if (!$this->ion_auth->logged_in()){
-			 	$this->load->view('includes/nli_header');
-				$this->load->view('nli_home');
-			} elseif (!$this->ion_auth->is_admin()){
-				redirect('admin', 'refresh');
-			} else {
-				$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-	
-				$data['first_name'] = $this->ion_auth->user()->row()->first_name;
-				redirect('user', 'refresh');
-			}
-        }
+		private $content;
 		
-		public function login(){
-			$this->load->view('includes/nli_header');
-			$this->load->view('login');
+		public function __construct(){
+			parent::__construct();
+			$this->content = 'public/public_template';
 		}
 		
-		public function signup(){
-			$this->load->view('includes/nli_header');
-			$this->load->view('signup');
-		}	
+        public function index(){
+		 	$data['title'] = 'Welcome'; 
+			$data['content'] = $this->content;
+			$data['public_content'] = 'public/home_public';
+			$data['navigation'] = $this->navigation;
+			$this->load->view($this->layout, $data);
+
+        }
+		
     }
     
-?>
+/* 
+ * End of file App.php 
+ * Location: application/controllers/App.php 
+ * */

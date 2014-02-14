@@ -1,87 +1,66 @@
-<?php
-   class User_Model extends MY_Model {
-   	
-	public function __construct(){
-		//parent::construct();
-		$this->table = 'users';
-	}
-	/*
-	 * rename all files to be capitilized
-	 * */
-   }
-   /*<?php
-    class Model_users extends CI_Model {
-    	
-		public function can_log_in(){
-			$this->db->where('email', $this->input->post('email'));
-			$this->db->where('password', md5($this->input->post('password')));
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-			$query = $this->db->get('users');
-			if($query->num_rows == 1){
-				return true;
-			} else {
-				return false;	
-			}
-    	}
-		public function add_temp_user($key){
-			$data = array(
-				'email' => $this->input->post('email'),
-				'password' => md5($this->input->post('password')),
-				'key' => $key
-			);
-			
-			$query = $this->db->insert('temp_users', $data);
-			
-			if ($query) {
-				return true;
-			} else {
-				return false;
+   /*
+    * FOR The API and users
+    * */
+   
+	class User_Model extends MY_Model {
+	
+		public function __construct() {
+			parent::__construct();
+			if(empty($table)){
+				$this->table = 'users'; 
 			}
 			
+			$this->user_id = $this->ion_auth->get_user_id(); // is this secure?
+		}
+	
+		public function set_table($table) {
+			$this->table = $table;
 		}
 		
-		public function is_key_valid($key){
-			$this->db->where('key', $key);
-			$query = $this->db->get('temp_users');
-			
-			if ($query->num_rows == 1) {
-				return true;
-			} else {
-				return false;
-			}
-			
+		public function get_table() {
+			return $this->table;
 		}
 		
-		public function edit_user($id, $data){
-			$this->db->where('id', $id);
-			$this->db->update('users', $data); 
+		public function add_order() {
+			//skip first two uri segments
+			foreach($this->uri->segment_array() as $segment => $order_id){
+				if($segment > 2){
+					//$this->db->where('id', $this->uri->segment($segment));
+					//$this->db->delete($this->table);
+				}
+			}
+			return $this->check_success();
 		}
 		
-		public function add_user($key){
-			$this->db->where('key', $key);
-			$temp_user = $this->db->get('temp_users');
-			
-			if ($temp_user) {
-				$row = $temp_user->row();
-				
-				$data = array(
-					'email' => $row->email,
-					'password' => $row->password
-				);
-				
-				$did_add_user = $this->db->insert('users', $data);	
+		public function delete_items($id_list) {
+			$success = array();
+			foreach ($id_list as $id) {
+				if($this->user_has($this->user_id, $id, $this->table)){
+					$this->db->where('id', $id);
+					$q = $this->db->delete($this->table);
+					array_push($success, $q);
+				}
 			}
-			
-			if($did_add_user){
-				$this->db->where('key', $key);
-				$this->db->delete('temp_users');
-				return $data['email'];
-			} else {
-				return false;
-			}
-			
+			return $this->check_success($success);
 		}
 		
+		public function user_has($user_id, $item_id, $table) {
+			$this->db->select('*')->from($table)->where('id', $item_id)->where('user_id', $user_id);
+			return $this->db->count_all_results() == 0 ? FALSE : TRUE;
+		}
+		
+		public function search_orders($search) {
+			// great link: 			http://stackoverflow.com/questions/8821844/how-to-create-mvc-for-search-in-codeigniter
+		}
+		
+		public function get_recent_orders() {
+			//$this->db->get_all;
+		}
 	}
-?>*/
-?>
+
+/* 
+ * End of file User_model.php 
+ * Location: application/models/User_model.php 
+ * */

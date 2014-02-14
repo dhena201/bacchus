@@ -55,8 +55,9 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<h1><?=$heading;?></h1>
+		<?=$message;?>
 	</div>
+	<iframe width="940" height="705" src="https://www.youtube.com/embed/z_trSIBCgF0"  style="padding: 10px 25% 0 25%;" frameborder="0" allowfullscreen &output=embed></iframe>
 </body>
 </html>
